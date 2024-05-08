@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2024-05-06" filename="main_page.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="0.84444445" lines-covered="38" lines-valid="45" package="screen" testname="lcov.info" version="1.6">
+    <lines>
+        <line number="1">
+            <code>import 'package:flutter/material.dart';</code>
+        </line>
+        <line number="2">
+            <code>import 'package:namer_app/backend/backend.dart';</code>
+        </line>
+        <line number="3">
+            <code>import 'package:namer_app/model/item.dart';</code>
+        </line>
+        <line number="4">
+            <code>import 'package:http/http.dart' as http;</code>
+        </line>
+        <line number="5">
+            <code>import 'create_page.dart';</code>
+        </line>
+        <line number="6">
+            <code>import 'edit_item_page.dart';</code>
+        </line>
+        <line number="7">
+            <code/>
+        </line>
+        <line number="8">
+            <code>class MainPage extends StatefulWidget {</code>
+        </line>
+        <line number="9">
+            <code/>
+        </line>
+        <line number="10">
+            <code>  final Backend _backend;</code>
+        </line>
+        <line number="11">
+            <code>  final http.Client _client;</code>
+        </line>
+        <line number="12">
+            <code/>
+        </line>
+        <line hits="1" number="13">
+            <code>  const MainPage(this._backend, this._client);</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="14">
+            <code/>
+        </line>
+        <line hits="1" number="15">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="16">
+            <code>  State&lt;MainPage&gt; createState() =&gt; _MainPageState();</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="17">
+            <code>}</code>
+        </line>
+        <line number="18">
+            <code/>
+        </line>
+        <line number="19">
+            <code>class _MainPageState extends State&lt;MainPage&gt; {</code>
+        </line>
+        <line number="20">
+            <code/>
+        </line>
+        <line number="21">
+            <code>  // access to backend proxy</code>
+        </line>
+        <line number="22">
+            <code>  late Backend _backend;</code>
+        </line>
+        <line number="23">
+            <code/>
+        </line>
+        <line number="24">
+            <code>  // access to http stack</code>
+        </line>
+        <line number="25">
+            <code>  late http.Client _client;</code>
+        </line>
+        <line number="26">
+            <code/>
+        </line>
+        <line hits="1" number="27">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="28">
+            <code>  void initState() {</code>
+        </line>
+        <line hits="1" number="29">
+            <code>    super.initState();</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3" number="30">
+            <code>    _backend = widget._backend;</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3" number="31">
+            <code>    _client = widget._client;</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="32">
+            <code>  }</code>
+        </line>
+        <line number="33">
+            <code/>
+        </line>
+        <line number="34">
+            <code/>
+        </line>
+        <line hits="1" number="35">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="36">
+            <code>  Widget build(BuildContext context) {</code>
+        </line>
+        <line hits="1" number="37">
+            <code>    return Scaffold(</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="38">
+            <code>        appBar: AppBar(</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="39">
+            <code>          backgroundColor: Colors.indigo,</code>
+        </line>
+        <line hits="1" number="40">
+            <code>          title: Center(</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="41">
+            <code>            child: Text('Basic Item App'),</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="42">
+            <code>          ),</code>
+        </line>
+        <line number="43">
+            <code>        ),</code>
+        </line>
+        <line hits="1" number="44">
+            <code>        body: FutureBuilder&lt;List&lt;Item&gt;&gt;(</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3" number="45">
+            <code>                future:  _backend.fetchItemList(_client),</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="46">
+            <code>                builder: (context, snapshot) {</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="47">
+            <code>                  return snapshot.hasData</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="48">
+            <code>                      ? ListView.builder(</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2" number="49">
+            <code>                          itemCount: snapshot.data?.length,</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="50">
+            <code>                          itemBuilder: (_, int position) {</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2" number="51">
+            <code>                            final item = snapshot.data?[position];</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="52">
+            <code>                            return Card(</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="53">
+            <code>                              child: ListTile(</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2" number="54">
+            <code>                                title: Text(item!.name),</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2" number="55">
+            <code>                                subtitle: Text(item.description),</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="56">
+            <code>                                trailing: Row(</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="57">
+            <code>                                  mainAxisSize: MainAxisSize.min,</code>
+        </line>
+        <line hits="1" number="58">
+            <code>                                  children: &lt;Widget&gt;[</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="59">
+            <code>                                  IconButton(</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="60">
+            <code>                                    key: Key("edit"),</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="61">
+            <code>                                    icon: const Icon(Icons.edit),</code>
+        </line>
+        <line number="62">
+            <code>                                    tooltip: 'Edit Item',</code>
+        </line>
+        <line hits="0" number="63">
+            <code>                                    onPressed: () =&gt; showDialog&lt;Item&gt;(</code>
+        </line>
+        <line number="64">
+            <code>                                      context: context,</code>
+        </line>
+        <line hits="0" number="65">
+            <code>                                      builder: (BuildContext context) =&gt; Dialog.fullscreen(</code>
+        </line>
+        <line hits="0" number="66">
+            <code>                                        child: EditItemPage(_backend, _client, item.id),</code>
+        </line>
+        <line number="67">
+            <code>                                      ),</code>
+        </line>
+        <line hits="0" number="68">
+            <code>                                    ).then((updatedItem) {</code>
+        </line>
+        <line number="69">
+            <code>                                      if (updatedItem != null) {</code>
+        </line>
+        <line hits="0" number="70">
+            <code>                                        setState((){});</code>
+        </line>
+        <line number="71">
+            <code>                                      }</code>
+        </line>
+        <line number="72">
+            <code>                                      }),</code>
+        </line>
+        <line number="73">
+            <code>                                  ),</code>
+        </line>
+        <line hits="1" number="74">
+            <code>                                  IconButton(</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="75">
+            <code>                                    key: Key("delete"),</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="76">
+            <code>                                    icon: const Icon(Icons.delete),</code>
+        </line>
+        <line number="77">
+            <code>                                    tooltip: 'Delete Item',</code>
+        </line>
+        <line hits="0" number="78">
+            <code>                                    onPressed: () {</code>
+        </line>
+        <line hits="0" number="79">
+            <code>                                      _backend.deleteItem(_client, item.id).then((_) =&gt; setState(() {</code>
+        </line>
+        <line number="80">
+            <code/>
+        </line>
+        <line number="81">
+            <code>                                      }));</code>
+        </line>
+        <line number="82">
+            <code>                                    }</code>
+        </line>
+        <line number="83">
+            <code>                                  ),</code>
+        </line>
+        <line number="84">
+            <code>                                ])</code>
+        </line>
+        <line number="85">
+            <code>                              ),</code>
+        </line>
+        <line number="86">
+            <code>                            );</code>
+        </line>
+        <line number="87">
+            <code>                          },</code>
+        </line>
+        <line hits="1" number="88">
+            <code>                        ) : Center(</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="89">
+            <code>                          child: CircularProgressIndicator(),</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="90">
+            <code>                        );</code>
+        </line>
+        <line number="91">
+            <code>                },</code>
+        </line>
+        <line number="92">
+            <code>            ),</code>
+        </line>
+        <line hits="1" number="93">
+            <code>        floatingActionButton: FloatingActionButton(</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="94">
+            <code>          tooltip: 'New',</code>
+        </line>
+        <line hits="2" number="95">
+            <code>          onPressed: () =&gt; showDialog&lt;bool&gt;(</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="96">
+            <code>            context: context,</code>
+        </line>
+        <line hits="2" number="97">
+            <code>            builder: (BuildContext context) =&gt; Dialog.fullscreen(</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3" number="98">
+            <code>              child: CreateItemPage(_backend, _client),</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="99">
+            <code>            ),</code>
+        </line>
+        <line hits="1" number="100">
+            <code>          ).then((_) =&gt; setState((){})),</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="101">
+            <code>          child: Icon(Icons.add),</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="102">
+            <code>        ),</code>
+        </line>
+        <line number="103">
+            <code>    );</code>
+        </line>
+        <line number="104">
+            <code>  }</code>
+        </line>
+        <line number="105">
+            <code>}</code>
+        </line>
+    </lines>
+    <config branch-coverage="true" description-file="false" function-coverage="true" genhtml_hi_limit="90" genhtml_med_limit="75" legend="false" no-sort="false" no-source="false" show-details="false"/>
+    <base href="../"/>
+    <base href="../"/>
+</coverage>

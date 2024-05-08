@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2024-05-06" filename="backend.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="0.96875" lines-covered="31" lines-valid="32" package="backend" testname="lcov.info" version="1.6">
+    <lines>
+        <line number="1">
+            <code>import 'package:namer_app/model/item.dart';</code>
+        </line>
+        <line number="2">
+            <code>import 'dart:convert';</code>
+        </line>
+        <line number="3">
+            <code>import 'package:http/http.dart' as http;</code>
+        </line>
+        <line number="4">
+            <code/>
+        </line>
+        <line number="5">
+            <code>class Backend {</code>
+        </line>
+        <line number="6">
+            <code/>
+        </line>
+        <line number="7">
+            <code>  // use IP 10.0.2.2 to access localhost from emulator.</code>
+        </line>
+        <line number="8">
+            <code>  // static const _backend = "http://10.0.2.2:8080/";</code>
+        </line>
+        <line number="9">
+            <code/>
+        </line>
+        <line number="10">
+            <code>  // use IP 127.0.0.1 to access localhost from windows device.</code>
+        </line>
+        <line number="11">
+            <code>  static const _backend = "http://127.0.0.1:8080/";</code>
+        </line>
+        <line number="12">
+            <code/>
+        </line>
+        <line hits="2" number="13">
+            <code>  Future&lt;List&lt;Item&gt;&gt; fetchItemList(http.Client client) async {</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4" number="14">
+            <code>    final response = await client.get(Uri.parse('${_backend}items'));</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="15">
+            <code/>
+        </line>
+        <line hits="4" number="16">
+            <code>    if (response.statusCode == 200) {</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="14" number="17">
+            <code>      return List&lt;Item&gt;.from(json.decode(utf8.decode(response.bodyBytes)).map((x) =&gt; Item.fromJson(x)));</code>
+            <hit count="14" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="18">
+            <code>    } else {</code>
+        </line>
+        <line hits="1" number="19">
+            <code>      throw Exception('Failed to load Itemlist');</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="20">
+            <code>    }</code>
+        </line>
+        <line number="21">
+            <code>  }</code>
+        </line>
+        <line number="22">
+            <code/>
+        </line>
+        <line number="23">
+            <code/>
+        </line>
+        <line hits="1" number="24">
+            <code>  Future&lt;Item&gt; createItem(http.Client client, String name, String description) async {</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="25">
+            <code/>
+        </line>
+        <line hits="1" number="26">
+            <code>    Map data = {</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="27">
+            <code>      'name': name,</code>
+        </line>
+        <line number="28">
+            <code>      'description': description,</code>
+        </line>
+        <line number="29">
+            <code>    };</code>
+        </line>
+        <line number="30">
+            <code/>
+        </line>
+        <line hits="2" number="31">
+            <code>    var response = await client.post(Uri.parse('${_backend}item'),</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="32">
+            <code>        headers: &lt;String, String&gt;{'Content-Type': 'application/json'},</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1" number="33">
+            <code>        body: json.encode(data)</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="34">
+            <code>    );</code>
+        </line>
+        <line number="35">
+            <code/>
+        </line>
+        <line hits="2" number="36">
+            <code>    if (response.statusCode == 200) {</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4" number="37">
+            <code>      return Item.fromJson(json.decode(utf8.decode(response.bodyBytes)));</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="38">
+            <code>    } else {</code>
+        </line>
+        <line hits="1" number="39">
+            <code>      throw Exception('Failed to create item');</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="40">
+            <code>    }</code>
+        </line>
+        <line number="41">
+            <code/>
+        </line>
+        <line number="42">
+            <code>  }</code>
+        </line>
+        <line number="43">
+            <code/>
+        </line>
+        <line hits="1" number="44">
+            <code>  Future&lt;Item&gt; fetchItemData(http.Client client, int id) async {</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="45">
+            <code/>
+        </line>
+        <line hits="3" number="46">
+            <code>    final response = await client.get(Uri.parse('${_backend}item/$id'));</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="47">
+            <code/>
+        </line>
+        <line hits="2" number="48">
+            <code>    if (response.statusCode == 200) {</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4" number="49">
+            <code>      var tmp = Item.fromJson(json.decode(utf8.decode(response.bodyBytes)));</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="50">
+            <code>      return tmp;</code>
+        </line>
+        <line number="51">
+            <code>      //return Item.fromJson(json.decode(utf8.decode(response.bodyBytes)));</code>
+        </line>
+        <line number="52">
+            <code>    } else {</code>
+        </line>
+        <line hits="0" number="53">
+            <code>      throw Exception('Failed to load Item');</code>
+        </line>
+        <line number="54">
+            <code>    }</code>
+        </line>
+        <line number="55">
+            <code>  }</code>
+        </line>
+        <line number="56">
+            <code/>
+        </line>
+        <line hits="1" number="57">
+            <code>  Future&lt;void&gt; deleteItem(http.Client client, int id) async {</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3" number="58">
+            <code>    final response = await client.delete(Uri.parse('${_backend}item/$id'));</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="59">
+            <code/>
+        </line>
+        <line hits="2" number="60">
+            <code>    if (response.statusCode == 200) {</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="61">
+            <code>      // Item erfolgreich gelöscht</code>
+        </line>
+        <line number="62">
+            <code>    } else {</code>
+        </line>
+        <line number="63">
+            <code>      // Loggen oder anzeigen der Fehlerantwort</code>
+        </line>
+        <line hits="3" number="64">
+            <code>      print('Fehler beim Löschen des Items: ${response.statusCode}');</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3" number="65">
+            <code>      throw Exception('Failed to delete item: ${response.body}');</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="66">
+            <code>    }</code>
+        </line>
+        <line number="67">
+            <code>  }</code>
+        </line>
+        <line number="68">
+            <code/>
+        </line>
+        <line hits="2" number="69">
+            <code>  Future&lt;Item&gt; editItem(http.Client client, int id, String name, String description) async {</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2" number="70">
+            <code>    Map data = {</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="71">
+            <code>      'name': name,</code>
+        </line>
+        <line number="72">
+            <code>      'description': description,</code>
+        </line>
+        <line number="73">
+            <code>    };</code>
+        </line>
+        <line number="74">
+            <code/>
+        </line>
+        <line hits="2" number="75">
+            <code>    var response = await client.put(</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4" number="76">
+            <code>      Uri.parse('${_backend}item/$id'),</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2" number="77">
+            <code>      headers: &lt;String, String&gt;{'Content-Type': 'application/json'},</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2" number="78">
+            <code>      body: json.encode(data),</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="79">
+            <code>    );</code>
+        </line>
+        <line number="80">
+            <code/>
+        </line>
+        <line hits="4" number="81">
+            <code>    if (response.statusCode == 200) {</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="8" number="82">
+            <code>      return Item.fromJson(json.decode(utf8.decode(response.bodyBytes)));</code>
+            <hit count="8" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="83">
+            <code>    } else {</code>
+        </line>
+        <line hits="1" number="84">
+            <code>      throw Exception('Failed to edit item');</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line number="85">
+            <code>    }</code>
+        </line>
+        <line number="86">
+            <code>  }</code>
+        </line>
+        <line number="87">
+            <code/>
+        </line>
+        <line number="88">
+            <code>}</code>
+        </line>
+    </lines>
+    <config branch-coverage="true" description-file="false" function-coverage="true" genhtml_hi_limit="90" genhtml_med_limit="75" legend="false" no-sort="false" no-source="false" show-details="false"/>
+    <base href="../"/>
+    <base href="../"/>
+</coverage>
